@@ -108,7 +108,7 @@ const Blog = ({ apidata }) => {
   return (
     <Layout>
       <div className="page">
-        <h1>My Blog trials</h1>
+        <h1>My Blog trials shit</h1>
 
         <MyDropzone />
 
