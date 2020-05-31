@@ -108,7 +108,7 @@ const Blog = ({ apidata }) => {
   return (
     <Layout>
       <div className="page">
-        <h1>My Blog ere new from github</h1>
+        <h1>My Blog ere new from xxx github</h1>
 
         <MyDropzone />
 
