@@ -8,23 +8,23 @@ import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 
 function MyDropzone() {
-  const onDrop = useCallback(acceptedFiles => {
+  const onDrop = useCallback((acceptedFiles) => {
     fetch("https://atlekraft.com/api/test", {
       // Your POST endpoint
       method: "POST",
       headers: {
-        "Content-Type": "PNG"
+        "Content-Type": "PNG",
       },
-      body: acceptedFiles[0].path // This is your file object
+      body: acceptedFiles[0].path, // This is your file object
     })
       .then(
-        response => response.json() // if the response is a JSON object
+        (response) => response.json() // if the response is a JSON object
       )
       .then(
-        success => console.log("success " + success) // Handle the success response object
+        (success) => console.log("success " + success) // Handle the success response object
       )
       .catch(
-        error => console.log("error " + error) // Handle the error response object
+        (error) => console.log("error " + error) // Handle the error response object
       );
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
@@ -60,7 +60,7 @@ const Post = ({ post }) => (
   <Link href="/p/[id]" as={`/p/${post.id}`}>
     <a>
       <h2>{post.title}</h2>
-      <small>By my friend xx {post.author.name}</small>
+      <small>By my enemy xx {post.author.name}</small>
       <p>{post.content}</p>
       <style jsx>{`
         a {
@@ -77,7 +77,7 @@ const Post = ({ post }) => (
 const Blog = ({ apidata }) => {
   const { loading, error, data } = useQuery(FeedQuery);
 
-  const onChangeHandler = event => {
+  const onChangeHandler = (event) => {
     //console.log(event.target.files[0])
     const data = new FormData();
     data.append("sampleFile", event.target.files[0]);
@@ -85,16 +85,16 @@ const Blog = ({ apidata }) => {
     fetch("/api/test", {
       // Your POST endpoint
       method: "POST",
-      body: data // This is your file object
+      body: data, // This is your file object
     })
       .then(
-        response => response.json() // if the response is a JSON object
+        (response) => response.json() // if the response is a JSON object
       )
       .then(
-        success => console.log("success " + success) // Handle the success response object
+        (success) => console.log("success " + success) // Handle the success response object
       )
       .catch(
-        error => console.log("error " + error) // Handle the error response object
+        (error) => console.log("error " + error) // Handle the error response object
       );
   };
 
@@ -117,7 +117,7 @@ const Blog = ({ apidata }) => {
         {/* {JSON.stringify(apidata, null, 2)} */}
 
         <main>
-          {data.feed.map(post => (
+          {data.feed.map((post) => (
             <div className="post">
               <Post key={post.id} post={post} />
             </div>
